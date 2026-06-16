@@ -1,9 +1,12 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
 
 const Pedido = require('./models/Pedido');
+// IMPORTANTE: Importamos el controlador de pagos que acabamos de crear
+const { generarQrOficial } = require('./controllers/paymentController');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -46,6 +49,10 @@ app.post('/pedidos', async (req, res) => {
     res.status(500).json({ error: 'Error guardando el pedido' });
   }
 });
+
+// NUEVA RUTA: POST /pedidos/generar-qr-oficial — Solicita el QR transaccional a Bancolombia
+// Simplemente le pasamos la función que importamos del controlador
+app.post('/pedidos/generar-qr-oficial', generarQrOficial);
 
 // GET /admin/pedidos — Ver todos los pedidos (panel admin)
 app.get('/admin/pedidos', requireAdmin, async (req, res) => {
