@@ -10,8 +10,8 @@ const URL_QR_CODE = '/v3/sales/qr/request';
 
 // Cargamos las llaves desde la carpeta certs/ (Subiendo dos niveles desde controllers/)
 const agentOptions = {
-    cert: fs.readFileSync(path.join(__dirname, '../certificado.pem')),
-    key: fs.readFileSync(path.join(__dirname, '../llave_privada.key')),
+    cert: fs.readFileSync(path.join(__dirname, '../../certificado.pem')),
+    key: fs.readFileSync(path.join(__dirname, '../../llave_privada.key')),
     rejectUnauthorized: false // Permite omitir la validación estricta de CA en Sandbox
 };
 const httpsAgent = new https.Agent(agentOptions);
