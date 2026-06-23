@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const Pedido = require('./models/Pedido');
-// IMPORTANTE: Importamos el controlador de pagos que acabamos de crear
-const {generarQROficial} = require('./controllers/paymentConroller');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
