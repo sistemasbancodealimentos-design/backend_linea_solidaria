@@ -50,9 +50,6 @@ app.post('/pedidos', async (req, res) => {
   }
 });
 
-// NUEVA RUTA: POST /pedidos/generar-qr-oficial — Solicita el QR transaccional a Bancolombia
-// Simplemente le pasamos la función que importamos del controlador
-app.post('/pedidos/generar-qr-oficial', generarQrOficial);
 
 // GET /admin/pedidos — Ver todos los pedidos (panel admin)
 app.get('/admin/pedidos', requireAdmin, async (req, res) => {
